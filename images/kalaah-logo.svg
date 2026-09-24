@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 110" role="img" aria-labelledby="title description">
+  <title id="title">Kalaah Fashion Studio</title>
+  <desc id="description">Kalaah Fashion Studio monogram and wordmark</desc>
+  <g fill="#1c1c1c">
+    <path d="M55 8C29 8 8 29 8 55s21 47 47 47 47-21 47-47S81 8 55 8Zm0 2c25 0 45 20 45 45S80 100 55 100 10 80 10 55 30 10 55 10Z"/>
+    <path d="M40 29h6v23l24-23h8L51 55l29 27h-9L46 58v24h-6V29Z"/>
+    <path d="M116 18h1v74h-1z" opacity=".45"/>
+    <text x="140" y="57" font-family="Georgia, 'Times New Roman', serif" font-size="43" letter-spacing="7">KALAAH</text>
+    <text x="144" y="82" font-family="Arial, sans-serif" font-size="13" font-weight="700" letter-spacing="5">FASHION STUDIO</text>
+  </g>
+</svg>

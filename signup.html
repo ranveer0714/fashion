@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create Account | Kalaah</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600,700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body data-page="signup" class="auth-page">
+    <main class="auth-layout">
+      <a
+        class="auth-brand"
+        href="index.html"
+        aria-label="Kalaah Fashion Studio home"
+        ><img
+          class="brand-logo"
+          src="images/kalaah-logo.svg"
+          alt="Kalaah Fashion Studio"
+      /></a>
+      <div class="auth-image"></div>
+      <section class="auth-panel">
+        <div>
+          <p class="eyebrow">Join the studio</p>
+          <h1>Make it<br /><em>yours.</em></h1>
+        </div>
+        <form class="auth-form" novalidate>
+          <label>Full name<input name="name" required /></label
+          ><label
+            >Email address<input type="email" name="email" required /></label
+          ><label
+            >Password<input
+              type="password"
+              name="password"
+              minlength="6"
+              required /></label
+          ><button class="btn btn-dark" type="submit">Create account</button>
+          <p class="form-message"></p>
+        </form>
+        <p class="auth-switch">
+          Already a member? <a href="login.html">Sign in</a>
+        </p>
+      </section>
+    </main>
+    <script src="app.js"></script>
+  </body>
+</html>
