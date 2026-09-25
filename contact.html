@@ -1,90 +1,171 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Contact | Kalaah</title>
-    <link rel="icon" type="image/svg+xml" href="images/kalaah-logo.svg">
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600,700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-    />
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body data-page="contact">
-    <div data-site-header></div>
-    <main>
-      <section class="page-intro contact-intro">
-        <p class="eyebrow">We would love to hear from you</p>
-        <h1>Visit the studio<br /><em>or leave a note.</em></h1>
-      </section>
-      <section class="contact-layout section">
-        <form class="contact-form form-card" novalidate>
-          <div class="field-row">
-            <label>Name<input name="name" required /></label
-            ><label>Email<input type="email" name="email" required /></label>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Contact Kalaah Fashion Studio for personal styling, custom design, alterations and studio visits." />
+  <title>Contact — Kalaah Fashion Studio</title>
+
+  <link rel="icon" type="image/svg+xml" href="images/kalaah-logo.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body data-page="contact" class="contact-page">
+  <div data-site-header></div>
+
+  <main>
+    <section class="contact-hero">
+      <div class="contact-hero-copy">
+        <p class="eyebrow">Start a conversation</p>
+        <h1>Let’s make<br /><em>something personal.</em></h1>
+        <p>
+          Tell us what you are looking for, the occasion you are dressing
+          for, or simply the feeling you want the piece to have. Our studio
+          will get back to you with thoughtful next steps.
+        </p>
+      </div>
+
+      <div class="contact-hero-card">
+        <img src="images/kalaah-logo.svg" alt="Kalaah Fashion Studio" />
+        <span>Personal styling · Custom design · Studio visits</span>
+      </div>
+    </section>
+
+    <section class="contact-content">
+      <div class="contact-form-column">
+        <div class="contact-section-heading">
+          <p class="eyebrow">Write to the studio</p>
+          <h2>Tell us a little<br /><em>about your idea.</em></h2>
+        </div>
+
+        <form class="contact-form professional-contact-form" novalidate>
+          <div class="contact-field-grid">
+            <label>
+              Full name
+              <input type="text" name="name" placeholder="Your name" required />
+            </label>
+
+            <label>
+              Email address
+              <input type="email" name="email" placeholder="you@example.com" required />
+            </label>
           </div>
-          <label>Subject<input name="subject" required /></label
-          ><label
-            >Message<textarea
-              name="message"
-              rows="6"
-              required
-            ></textarea></label
-          ><button class="btn btn-dark" type="submit">Send message</button>
-          <p class="form-message"></p>
+
+          <div class="contact-field-grid">
+            <label>
+              Phone number
+              <input type="tel" name="phone" placeholder="+91 00000 00000" />
+            </label>
+
+            <label>
+              What can we help with?
+              <select name="enquiry" required>
+                <option value="">Select an option</option>
+                <option value="personal-styling">Personal styling</option>
+                <option value="custom-design">Custom design</option>
+                <option value="made-to-order">Made to order</option>
+                <option value="alterations">Alterations</option>
+                <option value="studio-visit">Studio visit</option>
+                <option value="other">Something else</option>
+              </select>
+            </label>
+          </div>
+
+          <label>
+            Subject
+            <input type="text" name="subject" placeholder="How can we help?" required />
+          </label>
+
+          <label>
+            Your message
+            <textarea name="message" rows="6" placeholder="Tell us about the piece, occasion, fit or idea on your mind..." required></textarea>
+          </label>
+
+          <div class="contact-form-footer">
+            <p>
+              We usually reply within one working day.
+            </p>
+            <button class="btn btn-dark" type="submit">
+              Send enquiry <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </div>
+
+          <span class="form-message" role="status" aria-live="polite"></span>
         </form>
-        <aside class="contact-details">
-          <article>
-            <i class="fa-solid fa-location-dot"></i>
+      </div>
+
+      <aside class="contact-details-card">
+        <p class="eyebrow">Come by</p>
+        <h2>The studio<br /><em>is yours to explore.</em></h2>
+        <p class="contact-details-intro">
+          Visit us for a styling conversation, fabric consultation or a
+          closer look at the current edit.
+        </p>
+
+        <div class="contact-detail-list">
+          <div class="contact-detail-item">
+            <span class="contact-detail-icon"><i class="fa-regular fa-clock"></i></span>
             <div>
-              <h3>The Kalaah Studio</h3>
-              <p>
-                18, Turner Road, Bandra West<br />Mumbai, Maharashtra 400050
-              </p>
+              <strong>Studio hours</strong>
+              <p>Monday – Saturday<br />10:30am – 7:00pm</p>
             </div>
-          </article>
-          <article>
-            <i class="fa-solid fa-phone"></i>
-            <div>
-              <h3>Call us</h3>
-              <p>+91 22 4962 8890<br />Monday - Saturday, 10am - 7pm</p>
-            </div>
-          </article>
-          <article>
-            <i class="fa-solid fa-envelope"></i>
-            <div>
-              <h3>Write to us</h3>
-              <p>hello@kalaahstudio.com<br />care@kalaahstudio.com</p>
-            </div>
-          </article>
-          <div class="social-row">
-            <a href="#" aria-label="Instagram"
-              ><i class="fa-brands fa-instagram"></i></a
-            ><a href="#" aria-label="Pinterest"
-              ><i class="fa-brands fa-pinterest-p"></i></a
-            ><a href="#" aria-label="Facebook"
-              ><i class="fa-brands fa-facebook-f"></i
-            ></a>
           </div>
-        </aside>
-      </section>
-      <section class="map">
-        <iframe
-          title="Kalaah Studio location"
-          src="https://www.google.com/maps?q=Bandra%20West%20Mumbai&output=embed"
-          loading="lazy"
-        ></iframe>
-      </section>
-    </main>
-    <div data-site-footer></div>
-    <div data-modal></div>
-    <script src="app.js"></script>
-  </body>
+
+          <div class="contact-detail-item">
+            <span class="contact-detail-icon"><i class="fa-solid fa-location-dot"></i></span>
+            <div>
+              <strong>Visit us</strong>
+              <p>18, Turner Road, Bandra West<br />Mumbai 400050</p>
+            </div>
+          </div>
+
+          <div class="contact-detail-item">
+            <span class="contact-detail-icon"><i class="fa-solid fa-phone"></i></span>
+            <div>
+              <strong>Call the studio</strong>
+              <p><a href="tel:+912249628890">+91 22 4962 8890</a></p>
+            </div>
+          </div>
+
+          <div class="contact-detail-item">
+            <span class="contact-detail-icon"><i class="fa-regular fa-envelope"></i></span>
+            <div>
+              <strong>Email</strong>
+              <p><a href="mailto:hello@kalaahstudio.com">hello@kalaahstudio.com</a></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-actions">
+          <a class="contact-outline-btn" href="tel:+912249628890">
+            <i class="fa-solid fa-phone"></i> Call studio
+          </a>
+          <a class="contact-outline-btn" href="https://wa.me/912249628890" target="_blank" rel="noopener">
+            <i class="fa-brands fa-whatsapp"></i> WhatsApp
+          </a>
+        </div>
+
+        <a class="contact-social-link" href="#" aria-label="Open Kalaah Instagram">
+          Follow along on Instagram <i class="fa-brands fa-instagram"></i>
+        </a>
+      </aside>
+    </section>
+
+    <section class="contact-image-strip">
+      <div>
+        <p class="eyebrow">Made for your moments</p>
+        <h2>Bring the photo<br />you <em>saved.</em></h2>
+      </div>
+      <img src="images/img15.jpg" alt="Kalaah fashion detail" />
+    </section>
+  </main>
+
+  <div data-site-footer></div>
+  <div data-modal></div>
+  <script src="app.js"></script>
+</body>
 </html>

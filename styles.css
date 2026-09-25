@@ -1,4 +1,4 @@
-/* Kalaah Fashion Studio — consolidated stylesheet */
+/* Kalaah Fashion Studio — responsive consolidated stylesheet */
 
 :root {
   --ivory: #f8f4ef;
@@ -21,10 +21,16 @@ html {
 }
 
 body {
+  min-width: 320px;
   margin: 0;
+  overflow-x: hidden;
   background: var(--ivory);
   color: var(--ink);
   font: 14px/1.7 Montserrat, Arial, sans-serif;
+}
+
+body.menu-open {
+  overflow: hidden;
 }
 
 a {
@@ -56,25 +62,27 @@ video {
   text-transform: uppercase;
 }
 
-/* Header */
+/* Header: logo left, navigation center, portal right */
 .site-header {
   position: sticky;
   top: 0;
   z-index: 1000;
   min-height: 78px;
   display: grid;
-  grid-template-columns: 1fr auto 1fr;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
   align-items: center;
-  gap: 0;
+  gap: 20px;
   padding: 0 max(5vw, 30px);
   border-bottom: 1px solid rgba(28, 28, 28, 0.12);
-  background: var(--ivory);
+  background: rgba(248, 244, 239, 0.97);
+  backdrop-filter: blur(12px);
 }
 
 .brand {
   display: inline-flex;
   align-items: center;
   justify-self: start;
+  min-width: 0;
 }
 
 .brand-logo {
@@ -87,7 +95,7 @@ video {
   display: flex;
   align-items: center;
   justify-self: center;
-  gap: 26px;
+  gap: clamp(16px, 2.2vw, 30px);
   font-size: 11px;
   letter-spacing: 1.2px;
   text-transform: uppercase;
@@ -95,6 +103,7 @@ video {
 
 .nav-links a {
   position: relative;
+  white-space: nowrap;
 }
 
 .nav-links a:not(.cart-link)::after {
@@ -147,16 +156,22 @@ video {
 
 .nav-toggle {
   display: none;
+  width: 42px;
+  height: 42px;
+  margin: 0;
+  padding: 0;
   border: 0;
   background: transparent;
-  font-size: 19px;
+  color: var(--ink);
+  font-size: 20px;
 }
 
-/* Shared buttons */
+/* Shared controls */
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  min-height: 44px;
   padding: 13px 22px;
   border: 1px solid var(--ink);
   font-size: 10px;
@@ -205,7 +220,7 @@ video {
   transform: translateX(4px);
 }
 
-/* Homepage hero */
+/* Homepage */
 .atelier-home .site-header {
   position: sticky;
 }
@@ -281,6 +296,7 @@ video {
 
 .hero-stats {
   display: flex;
+  flex-wrap: wrap;
   gap: 18px;
   margin-top: 30px;
 }
@@ -351,7 +367,7 @@ video {
   }
 }
 
-/* Atelier page */
+/* Atelier brand page */
 .atelier-brand-hero {
   min-height: calc(100vh - 78px);
   display: grid;
@@ -478,26 +494,33 @@ video {
   text-transform: uppercase;
 }
 
-/* Story and values */
-.atelier-story {
+/* Common content sections */
+.atelier-story,
+.atelier-visit {
   display: grid;
   grid-template-columns: 1fr 1fr;
   min-height: 720px;
+}
+
+.atelier-story {
   background: var(--ivory);
 }
 
-.atelier-story-image {
+.atelier-story-image,
+.visit-image {
   min-height: 650px;
   overflow: hidden;
 }
 
-.atelier-story-copy {
+.atelier-story-copy,
+.visit-copy {
   align-self: center;
   max-width: 670px;
   padding: 8vw;
 }
 
-.atelier-story-copy > p:not(.eyebrow) {
+.atelier-story-copy > p:not(.eyebrow),
+.visit-copy > p:not(.eyebrow) {
   max-width: 480px;
   color: var(--muted);
   font-size: 13px;
@@ -516,7 +539,9 @@ video {
   border-bottom: 1px solid var(--line);
 }
 
-.atelier-values span {
+.atelier-values span,
+.services-grid article > span,
+.process-timeline span {
   color: var(--gold);
   font-size: 11px;
   font-weight: 700;
@@ -552,10 +577,6 @@ video {
   margin: 0 auto 58px;
 }
 
-.atelier-section-head h2 {
-  font-size: clamp(42px, 5vw, 72px);
-}
-
 .atelier-section-head > p:last-child {
   align-self: end;
   max-width: 350px;
@@ -582,13 +603,6 @@ video {
 
 .services-grid article:first-child {
   border-left: 1px solid var(--line);
-}
-
-.services-grid article > span,
-.process-timeline span {
-  color: var(--gold);
-  font-size: 11px;
-  font-weight: 700;
 }
 
 .service-kicker {
@@ -630,29 +644,22 @@ video {
 }
 
 /* Fabrics */
+.materials-section,
+.fabrics-page-section {
+  padding: 110px 7vw 120px;
+  background: var(--ivory);
+}
+
 .materials-section {
   display: grid;
   grid-template-columns: 0.72fr 1.28fr;
   gap: 7vw;
-  padding: 110px 8vw;
-  background: var(--ivory);
 }
 
 .materials-copy {
   position: sticky;
   top: 130px;
   align-self: start;
-}
-
-.materials-copy > p:not(.eyebrow) {
-  max-width: 340px;
-  color: var(--muted);
-  font-size: 13px;
-}
-
-.materials-copy small {
-  color: var(--muted);
-  font-size: 10px;
 }
 
 .material-list {
@@ -683,7 +690,6 @@ video {
   margin: 1px 0 0;
   color: var(--muted);
   font-size: 10px;
-  letter-spacing: 0.8px;
   text-transform: uppercase;
 }
 
@@ -691,6 +697,112 @@ video {
   color: var(--gold);
   font-size: 9px;
   letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.fabrics-heading {
+  max-width: 850px;
+  margin: 0 auto 65px;
+  text-align: center;
+}
+
+.fabrics-heading h1 {
+  margin: 0;
+  font: 500 clamp(46px, 6vw, 78px) / 1.02 "Playfair Display", serif;
+}
+
+.fabrics-heading > p:not(.eyebrow) {
+  max-width: 650px;
+  margin: 25px auto 12px;
+  color: var(--muted);
+}
+
+.fabric-card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+  max-width: 1240px;
+  margin: auto;
+}
+
+.fabric-card {
+  overflow: hidden;
+  border: 1px solid rgba(184, 155, 94, 0.24);
+  border-radius: 18px;
+  background: var(--ivory);
+  box-shadow: 0 12px 30px rgba(28, 28, 28, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.fabric-card:hover {
+  transform: translateY(-7px);
+  box-shadow: 0 20px 42px rgba(28, 28, 28, 0.15);
+}
+
+.fabric-swatch {
+  position: relative;
+  height: 210px;
+  overflow: hidden;
+}
+
+.fabric-swatch::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.34;
+  background: repeating-linear-gradient(125deg, transparent 0 4px, rgba(255, 255, 255, 0.28) 5px 6px);
+  mix-blend-mode: soft-light;
+}
+
+.fabric-swatch::before {
+  content: "";
+  position: absolute;
+  right: -8%;
+  bottom: -28px;
+  left: -8%;
+  z-index: 1;
+  height: 65px;
+  border-radius: 50% 50% 0 0;
+  background: var(--ivory);
+}
+
+.fabric-banarasi .fabric-swatch { background: linear-gradient(135deg, #6e2949, #9b506b); }
+.fabric-blush .fabric-swatch { background: linear-gradient(135deg, #d99aaa, #c48b9f); }
+.fabric-antique .fabric-swatch { background: linear-gradient(135deg, #bd9147, #d5b66e); }
+.fabric-sage .fabric-swatch { background: linear-gradient(135deg, #859c87, #b3c5ad); }
+.fabric-plum .fabric-swatch { background: linear-gradient(135deg, #30172f, #5a315d); }
+.fabric-ivory .fabric-swatch { background: linear-gradient(135deg, #dfd8d1, #faf7f2); }
+.fabric-rose .fabric-swatch { background: linear-gradient(135deg, #a8667b, #c48b9f); }
+.fabric-charcoal .fabric-swatch { background: linear-gradient(135deg, #2c292d, #554d58); }
+
+.fabric-card-content {
+  position: relative;
+  z-index: 2;
+  min-height: 118px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 8px 22px 22px;
+}
+
+.fabric-card-content h2 {
+  margin: 0;
+  font: 500 23px / 1.2 "Playfair Display", serif;
+}
+
+.fabric-card-content p {
+  margin: 5px 0 0;
+  color: var(--muted);
+  font-size: 10px;
+}
+
+.fabric-card-content strong {
+  flex-shrink: 0;
+  color: var(--gold);
+  font-size: 10px;
+  letter-spacing: 1px;
+  text-align: right;
   text-transform: uppercase;
 }
 
@@ -729,7 +841,7 @@ video {
   font-size: 12px;
 }
 
-/* Video advertisement sections */
+/* Video */
 .atelier-film {
   position: relative;
   min-height: 670px;
@@ -776,26 +888,11 @@ video {
 
 /* Visit */
 .atelier-visit {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  min-height: 720px;
   background: #f1ebe5;
 }
 
-.visit-image {
-  min-height: 630px;
-  overflow: hidden;
-}
-
 .visit-copy {
-  align-self: center;
   max-width: 580px;
-  padding: 8vw;
-}
-
-.visit-copy > p:not(.eyebrow) {
-  color: var(--muted);
-  font-size: 13px;
 }
 
 .visit-copy dl {
@@ -822,6 +919,213 @@ video {
   font-size: 12px;
 }
 
+/* Contact */
+.contact-hero,
+.contact-content,
+.contact-image-strip {
+  display: grid;
+  grid-template-columns: 1fr 0.8fr;
+  align-items: center;
+  gap: 8vw;
+  padding: 100px 9vw;
+}
+
+.contact-hero {
+  min-height: 500px;
+  background: linear-gradient(135deg, rgba(238, 230, 222, 0.92), rgba(248, 244, 239, 0.98));
+}
+
+.contact-hero h1,
+.contact-section-heading h2,
+.contact-details-card h2,
+.contact-image-strip h2 {
+  margin: 0;
+  font: 500 clamp(42px, 5vw, 78px) / 1.02 "Playfair Display", serif;
+}
+
+.contact-hero-copy > p:last-child,
+.contact-details-intro {
+  max-width: 510px;
+  margin-top: 28px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.contact-hero-card,
+.contact-details-card {
+  padding: 40px;
+  border: 1px solid var(--line);
+  background: #eee6de;
+}
+
+.contact-hero-card {
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.contact-hero-card img {
+  width: min(240px, 70%);
+  margin-bottom: 25px;
+}
+
+.contact-hero-card span {
+  color: var(--gold);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.contact-content {
+  grid-template-columns: 1.15fr 0.85fr;
+}
+
+.contact-section-heading {
+  margin-bottom: 42px;
+}
+
+.professional-contact-form {
+  display: grid;
+  gap: 27px;
+}
+
+.contact-field-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 25px;
+}
+
+.professional-contact-form label {
+  display: grid;
+  gap: 9px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.professional-contact-form input,
+.professional-contact-form textarea,
+.professional-contact-form select {
+  width: 100%;
+  padding: 12px 0;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  outline: 0;
+  background: transparent;
+  color: var(--ink);
+  font-size: 13px;
+  text-transform: none;
+}
+
+.professional-contact-form textarea {
+  min-height: 145px;
+  resize: vertical;
+}
+
+.contact-form-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 25px;
+}
+
+.contact-form-footer p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.form-message {
+  min-height: 22px;
+  color: var(--gold);
+  font-size: 12px;
+}
+
+.contact-detail-list {
+  margin-top: 30px;
+  border-top: 1px solid var(--ink);
+}
+
+.contact-detail-item {
+  display: grid;
+  grid-template-columns: 34px 1fr;
+  gap: 14px;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.contact-detail-icon {
+  color: var(--gold);
+  padding-top: 3px;
+}
+
+.contact-detail-item strong {
+  display: block;
+  font-size: 10px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.contact-detail-item p {
+  margin: 3px 0 0;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.contact-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 30px;
+}
+
+.contact-outline-btn {
+  display: inline-flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 42px;
+  border: 1px solid var(--ink);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: 0.25s ease;
+}
+
+.contact-outline-btn:hover {
+  background: var(--ink);
+  color: #fff;
+}
+
+.contact-social-link {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 25px;
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.contact-image-strip {
+  min-height: 380px;
+  grid-template-columns: 1fr 1fr;
+  background: var(--ink);
+  color: #fff;
+}
+
+.contact-image-strip img {
+  width: 100%;
+  height: 290px;
+  object-fit: cover;
+}
+
 /* Dark footer */
 .site-footer {
   position: relative;
@@ -844,7 +1148,6 @@ video {
 
 .footer-grid h4 {
   margin: 0 0 15px;
-  color: #f7f1eb;
   font-size: 10px;
   letter-spacing: 1.4px;
   text-transform: uppercase;
@@ -855,7 +1158,6 @@ video {
   margin: 9px 0;
   color: var(--footer-muted);
   font-size: 12px;
-  transition: color 0.2s ease;
 }
 
 .footer-grid a:hover {
@@ -877,29 +1179,7 @@ video {
   font-size: 10px;
 }
 
-/* Common panel, catalog and form helpers */
-.panel-link {
-  cursor: pointer;
-}
-
-.panel-link:focus-visible {
-  outline: 2px solid var(--gold);
-  outline-offset: 4px;
-}
-
-.page-intro {
-  padding: 90px max(5vw, 30px) 60px;
-  text-align: center;
-  background: #eee7df;
-}
-
-.shop-layout {
-  display: grid;
-  grid-template-columns: 250px 1fr;
-  gap: 45px;
-  padding: 45px 5vw 100px;
-}
-
+/* Catalog/cart/auth compatibility */
 .product-grid,
 .catalog .product-grid {
   display: grid;
@@ -922,11 +1202,6 @@ video {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.55s ease;
-}
-
-.product-card:hover img {
-  transform: scale(1.04);
 }
 
 .product-info {
@@ -953,12 +1228,6 @@ video {
 .product-info p {
   margin: 0;
   font-size: 12px;
-}
-
-.small-add {
-  border: 0;
-  background: transparent;
-  font-size: 16px;
 }
 
 .cart-page {
@@ -1062,11 +1331,50 @@ video {
   font-size: 11px;
 }
 
-/* Responsive */
+/* Tablet */
+@media (max-width: 1000px) {
+  .site-header {
+    padding-inline: 24px;
+  }
+
+  .brand-logo {
+    width: 180px;
+  }
+
+  .nav-links {
+    gap: 15px;
+    font-size: 10px;
+  }
+
+  .planning-portal-btn {
+    padding-inline: 15px;
+    font-size: 9px;
+  }
+
+  .atelier-brand-hero,
+  .atelier-hero {
+    gap: 3vw;
+    padding-inline: 5vw;
+  }
+
+  .atelier-brand-copy h1,
+  .atelier-hero h1 {
+    font-size: clamp(48px, 6vw, 72px);
+  }
+
+  .contact-content,
+  .contact-hero {
+    padding-inline: 6vw;
+  }
+}
+
+/* Mobile navigation and layouts */
 @media (max-width: 800px) {
   .site-header {
     min-height: 65px;
     display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
   }
 
   .brand-logo {
@@ -1075,41 +1383,70 @@ video {
 
   .nav-toggle {
     display: block;
+    order: 3;
     margin-left: auto;
-  }
-
-  .nav-links {
-    position: absolute;
-    top: 65px;
-    left: 0;
-    right: 0;
-    display: none;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 20px;
-    padding: 25px 5vw;
-    border-bottom: 1px solid var(--line);
-    background: var(--ivory);
-  }
-
-  .nav-links.open {
-    display: flex;
-  }
-
-  .nav-links .cart-link {
-    position: absolute;
-    top: 20px;
-    right: 5vw;
   }
 
   .planning-portal-btn {
     display: none;
   }
 
+  .nav-links {
+    position: fixed;
+    inset: 65px 0 0;
+    z-index: 999;
+    width: 100%;
+    height: calc(100dvh - 65px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 27px;
+    padding: 40px 24px 80px;
+    overflow-y: auto;
+    background: var(--ivory);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-12px);
+    transition: opacity 0.25s ease, visibility 0.25s ease, transform 0.25s ease;
+  }
+
+  .nav-links.open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .nav-links a {
+    font-size: 19px;
+    letter-spacing: 2px;
+  }
+
+  .nav-links a:not(.cart-link)::after {
+    bottom: -8px;
+    height: 2px;
+  }
+
+  .nav-links .cart-link {
+    position: static;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 12px;
+    font-size: 24px;
+  }
+
+  .cart-count {
+    font-size: 11px;
+  }
+
   .atelier-hero,
   .atelier-brand-hero,
   .atelier-story,
-  .atelier-visit {
+  .atelier-visit,
+  .contact-hero,
+  .contact-content,
+  .contact-image-strip {
     grid-template-columns: 1fr;
   }
 
@@ -1140,7 +1477,8 @@ video {
     margin-bottom: 38px;
   }
 
-  .services-grid {
+  .services-grid,
+  .process-timeline {
     grid-template-columns: 1fr 1fr;
   }
 
@@ -1153,10 +1491,6 @@ video {
     position: static;
   }
 
-  .process-timeline {
-    grid-template-columns: 1fr 1fr;
-  }
-
   .atelier-film {
     min-height: 580px;
   }
@@ -1165,13 +1499,28 @@ video {
     padding: 115px 7vw;
   }
 
+  .fabric-card-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .contact-hero,
+  .contact-content,
+  .contact-image-strip {
+    gap: 45px;
+    padding: 75px 6vw;
+  }
+
+  .contact-hero-card,
+  .contact-details-card {
+    padding: 32px 25px;
+  }
+
   .footer-grid {
     grid-template-columns: 1fr 1fr;
   }
 
   .shop-layout,
-  .cart-layout,
-  .contact-layout {
+  .cart-layout {
     grid-template-columns: 1fr;
   }
 
@@ -1192,9 +1541,23 @@ video {
   }
 }
 
-@media (max-width: 440px) {
+/* Small phones */
+@media (max-width: 560px) {
+  .site-header {
+    padding-inline: 16px;
+  }
+
   .brand-logo {
     width: 145px;
+  }
+
+  .atelier-brand-copy h1,
+  .atelier-story h2,
+  .atelier-film h2,
+  .visit-copy h2,
+  .contact-hero h1,
+  .contact-image-strip h2 {
+    font-size: 48px;
   }
 
   .atelier-brand-actions,
@@ -1205,17 +1568,15 @@ video {
     gap: 18px;
   }
 
-  .atelier-brand-copy h1,
-  .atelier-story h2,
-  .atelier-film h2,
-  .visit-copy h2 {
-    font-size: 48px;
-  }
-
   .atelier-designer-card {
     min-height: 430px;
     padding: 25px 18px;
     border-radius: 20px;
+  }
+
+  .atelier-designer-card::before {
+    inset: 12px;
+    border-radius: 14px;
   }
 
   .atelier-designer-logo-wrap {
@@ -1229,6 +1590,7 @@ video {
 
   .services-grid,
   .process-timeline,
+  .fabric-card-grid,
   .product-grid,
   .catalog .product-grid {
     grid-template-columns: 1fr;
@@ -1243,219 +1605,6 @@ video {
     display: none;
   }
 
-  .footer-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .footer-bottom {
-    flex-direction: column;
-    gap: 10px;
-  }
-}
-
-/* =========================================
-   FABRICS CARD GRID
-   ========================================= */
-
-.fabrics-page-section {
-  min-height: calc(100vh - 78px);
-  padding: 105px 7vw 120px;
-  background:
-    linear-gradient(
-      135deg,
-      rgba(248, 244, 239, 0.96),
-      rgba(238, 230, 222, 0.9)
-    );
-}
-
-.fabrics-heading {
-  max-width: 850px;
-  margin: 0 auto 65px;
-  text-align: center;
-}
-
-.fabrics-heading h1 {
-  margin: 0;
-  font: 500 clamp(46px, 6vw, 78px) / 1.02 "Playfair Display", serif;
-}
-
-.fabrics-heading h1 em {
-  font-weight: 500;
-}
-
-.fabrics-heading > p:not(.eyebrow) {
-  max-width: 650px;
-  margin: 25px auto 12px;
-  color: var(--muted);
-  font-size: 13px;
-}
-
-.fabrics-heading small {
-  display: block;
-  max-width: 620px;
-  margin: 0 auto;
-  color: var(--muted);
-  font-size: 10px;
-}
-
-/* Grid */
-
-.fabric-card-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 24px;
-  max-width: 1240px;
-  margin: 0 auto;
-}
-
-/* Card */
-
-.fabric-card {
-  overflow: hidden;
-  border: 1px solid rgba(184, 155, 94, 0.24);
-  border-radius: 18px;
-  background: var(--ivory);
-  box-shadow: 0 12px 30px rgba(28, 28, 28, 0.08);
-  transition:
-    transform 0.3s ease,
-    box-shadow 0.3s ease;
-}
-
-.fabric-card:hover {
-  transform: translateY(-7px);
-  box-shadow: 0 20px 42px rgba(28, 28, 28, 0.15);
-}
-
-/* Colored fabric area */
-
-.fabric-swatch {
-  position: relative;
-  height: 210px;
-  overflow: hidden;
-}
-
-/* Fine fabric texture */
-.fabric-swatch::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  opacity: 0.34;
-  background:
-    repeating-linear-gradient(
-      125deg,
-      transparent 0 4px,
-      rgba(255, 255, 255, 0.28) 5px 6px
-    );
-  mix-blend-mode: soft-light;
-}
-
-/* Curved transition into the card content */
-.fabric-swatch::before {
-  content: "";
-  position: absolute;
-  right: -8%;
-  bottom: -28px;
-  left: -8%;
-  height: 65px;
-  border-radius: 50% 50% 0 0;
-  background: var(--ivory);
-  z-index: 1;
-}
-
-/* Fabric tones */
-
-.fabric-banarasi .fabric-swatch {
-  background: linear-gradient(135deg, #6e2949, #9b506b);
-}
-
-.fabric-blush .fabric-swatch {
-  background: linear-gradient(135deg, #d99aaa, #c48b9f);
-}
-
-.fabric-antique .fabric-swatch {
-  background: linear-gradient(135deg, #bd9147, #d5b66e);
-}
-
-.fabric-sage .fabric-swatch {
-  background: linear-gradient(135deg, #859c87, #b3c5ad);
-}
-
-.fabric-plum .fabric-swatch {
-  background: linear-gradient(135deg, #30172f, #5a315d);
-}
-
-.fabric-ivory .fabric-swatch {
-  background: linear-gradient(135deg, #dfd8d1, #faf7f2);
-}
-
-.fabric-rose .fabric-swatch {
-  background: linear-gradient(135deg, #a8667b, #c48b9f);
-}
-
-.fabric-charcoal .fabric-swatch {
-  background: linear-gradient(135deg, #2c292d, #554d58);
-}
-
-/* Card text section */
-
-.fabric-card-content {
-  position: relative;
-  z-index: 2;
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 18px;
-  min-height: 118px;
-  padding: 8px 22px 22px;
-}
-
-.fabric-card-content h2 {
-  margin: 0;
-  font: 500 23px / 1.2 "Playfair Display", serif;
-}
-
-.fabric-card-content p {
-  margin: 5px 0 0;
-  color: var(--muted);
-  font-size: 10px;
-  letter-spacing: 0.5px;
-}
-
-.fabric-card-content strong {
-  flex-shrink: 0;
-  color: var(--gold);
-  font-size: 10px;
-  letter-spacing: 1px;
-  text-align: right;
-  text-transform: uppercase;
-}
-
-/* Mobile */
-
-@media (max-width: 900px) {
-  .fabric-card-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-
-@media (max-width: 560px) {
-  .fabrics-page-section {
-    padding: 70px 5vw 85px;
-  }
-
-  .fabrics-heading {
-    margin-bottom: 42px;
-  }
-
-  .fabrics-heading h1 {
-    font-size: 48px;
-  }
-
-  .fabric-card-grid {
-    grid-template-columns: 1fr;
-    gap: 18px;
-  }
-
   .fabric-swatch {
     height: 180px;
   }
@@ -1467,5 +1616,30 @@ video {
 
   .fabric-card-content h2 {
     font-size: 21px;
+  }
+
+  .contact-field-grid {
+    grid-template-columns: 1fr;
+    gap: 27px;
+  }
+
+  .contact-form-footer,
+  .contact-actions {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .contact-form-footer .btn,
+  .contact-outline-btn {
+    width: 100%;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    gap: 10px;
   }
 }
