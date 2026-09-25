@@ -119,20 +119,44 @@ const setCart = (c) => {
   localStorage.setItem("kalaah-cart", JSON.stringify(c));
   updateCount();
 };
+
 function header() {
   const p = document.body.dataset.page;
-  document
-    .querySelectorAll("[data-site-header]")
-    .forEach(
-      (el) =>
-        (el.innerHTML = `<header class="site-header"><a class="brand" href="index.html" aria-label="Kalaah Fashion Studio home"><img class="brand-logo" src="images/kalaah-logo.svg" alt="Kalaah Fashion Studio"></a><button class="nav-toggle" aria-label="Toggle navigation"><i class="fa-solid fa-bars"></i></button><nav class="nav-links"><a class="${p === "home" ? "active" : ""}" href="index.html">Home</a><a class="${p === "collections" || p === "product" ? "active" : ""}" href="collections.html">New Arrivals</a><a class="${p === "about" ? "active" : ""}" href="about.html">About</a><a class="${p === "contact" ? "active" : ""}" href="contact.html">Contact</a><a class="cart-link ${p === "cart" ? "active" : ""}" href="cart.html" aria-label="Shopping bag"><i class="fa-solid fa-bag-shopping"></i><sup class="cart-count">0</sup></a></nav></header>`),
-    );
+
+  document.querySelectorAll("[data-site-header]").forEach(
+    (el) =>
+      (el.innerHTML = `
+        <header class="site-header">
+          <a class="brand" href="index.html" aria-label="Kalaah Fashion Studio home">
+            <img class="brand-logo" src="images/kalaah-logo.svg" alt="Kalaah Fashion Studio" />
+          </a>
+          <button class="nav-toggle" aria-label="Toggle navigation">
+            <i class="fa-solid fa-bars"></i>
+          </button>
+          <nav class="nav-links">
+            <a class="${p === "atelier" ? "active" : ""}" href="atelier.html">Atelier</a>
+            <a class="${p === "services" ? "active" : ""}" href="services.html">Services</a>
+            <a class="${p === "fabrics" ? "active" : ""}" href="fabrics.html">Fabrics</a>
+            <a class="${p === "process" ? "active" : ""}" href="process.html">Process</a>
+            <a class="${p === "visit" ? "active" : ""}" href="visit.html">Visit</a>
+            <a class="cart-link ${p === "cart" ? "active" : ""}" href="cart.html" aria-label="Shopping bag">
+              <i class="fa-solid fa-bag-shopping"></i>
+              <sup class="cart-count">0</sup>
+            </a>
+          </nav>
+          <a class="planning-portal-btn" href="panel.html?type=service&id=styling">Planning Portal</a>
+        </header>
+      `),
+  );
+
   document
     .querySelector(".nav-toggle")
     ?.addEventListener("click", () =>
       document.querySelector(".nav-links").classList.toggle("open"),
     );
 }
+
+
 function footer() {
   document
     .querySelectorAll("[data-site-footer]")
@@ -204,7 +228,7 @@ function home() {
 }
 
 function heroSlider() {
-  const hero = document.querySelector(".hero");
+  const hero = document.querySelector(".atelier-hero");
   if (!hero) return;
 
   const slides = [...hero.querySelectorAll(".hero-slide")];
@@ -554,6 +578,25 @@ function forms() {
       }),
     );
 }
+function panelLinks() {
+  document.querySelectorAll(".panel-link").forEach((panel) => {
+    const openPanel = () => {
+      const { panelType, panelId } = panel.dataset;
+      window.location.href = `panel.html?type=${panelType}&id=${panelId}`;
+    };
+
+    panel.addEventListener("click", (event) => {
+      if (!event.target.closest("a, button")) openPanel();
+    });
+
+    panel.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        openPanel();
+      }
+    });
+  });
+}
 header();
 footer();
 updateCount();
@@ -565,3 +608,4 @@ collections();
 productPage();
 cartPage();
 forms();
+panelLinks();
